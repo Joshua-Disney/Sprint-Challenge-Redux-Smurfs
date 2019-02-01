@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getSmurfs } from '../actions';
+import { getSmurfs, addSmurf } from '../actions';
 import SmurfForm from './SmurfForm';
 import './App.css';
 /*
@@ -24,8 +24,9 @@ class App extends Component {
     this.setState({isAdding: !this.state.isAdding});
   }
 
-  addNewSmurf = () => {
-    this.props.addSmurf(this.state.smurf);
+  addNewSmurf = (event, state) => {
+    event.preventDefault()
+    this.props.addSmurf(state);
   };
 
   render() {
@@ -67,5 +68,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getSmurfs }
+  { getSmurfs, addSmurf }
 )(App)

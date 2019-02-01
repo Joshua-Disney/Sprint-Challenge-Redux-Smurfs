@@ -5,19 +5,15 @@ import { addSmurf } from  '../actions';
 
 class SmurfForm extends React.Component {
   state = {
-    smurf: {
-      name: '',
-      age: '',
-      height: ''
-    }
+    name: '',
+    age: '',
+    height: ''
   }
 
   handleChanges = event => {
     this.setState({
-      smurf: {
-        ...this.state.smurf,
+        ...this.state,
         [event.target.name]: event.target.value
-      }
     })
   }
 
@@ -27,13 +23,13 @@ class SmurfForm extends React.Component {
     return (
       <div className='formContainer'>
         <h2 className='formHeader'>{this.props.isAdding ? 'Add Smurf' : 'Update Smurf'}</h2>
-        <form className='form' onSubmit={this.props.addNewSmurf}>
+        <form className='form'>
           <input
             className='formInput'
             type='text'
             name='name'
             placeholder='Smurf name...'
-            value={this.state.smurf.name}
+            value={this.state.name}
             onChange={this.handleChanges}
           />
           <input
@@ -41,7 +37,7 @@ class SmurfForm extends React.Component {
             type='number'
             name='age'
             placeholder='Smurf age...'
-            value={this.state.smurf.age}
+            value={this.state.age}
             onChange={this.handleChanges}
           />
           <input
@@ -49,10 +45,10 @@ class SmurfForm extends React.Component {
             type='text'
             name='height'
             placeholder='Smurf height...'
-            value={this.state.smurf.height}
+            value={this.state.height}
             onChange={this.handleChanges}
           />
-          <button type='submit' className='formButton'>
+          <button onClick={(event) => this.props.addNewSmurf(event, this.state)} className='formButton'>
             {this.props.isAdding ? 'Add Smurf' : 'Update Smurf'}
           </button>
         </form>
