@@ -38,7 +38,7 @@ class App extends Component {
             {this.props.smurfs.map(smurf => (
               <div
                 className='smurfCard'
-                key={smurf.id}
+                key={smurf.id || smurf.name}
               >
                 <h4 className='smurfName'>{smurf.name}</h4>
                 <p className='smurfAge'>{smurf.age}</p>
