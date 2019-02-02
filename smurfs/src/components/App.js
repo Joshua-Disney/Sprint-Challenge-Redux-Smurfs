@@ -33,20 +33,20 @@ class App extends Component {
     return (
       <div className="App">
         <div className='container'>
+          <h1 className='villageHeading'>SMURF VILLAGE</h1>
           <div className='smurfVillage'>
-            <h1>SMURF VILLAGE</h1>
             {this.props.smurfs.map(smurf => (
               <div
                 className='smurfCard'
                 key={smurf.id || smurf.name}
               >
                 <h4 className='smurfName'>{smurf.name}</h4>
-                <p className='smurfAge'>{smurf.age}</p>
-                <p className='smurfHeight'>{smurf.height}</p>
+                <p className='smurfData'>{smurf.age} years old.</p>
+                <p className='smurfData'>{smurf.height} tall.</p>
               </div>
             ))}
-            <button className='addButton' onClick={this.toggleAdding}>{this.state.isAdding ? 'Cancel' : 'Add Smurf'}</button>
           </div>
+          <button className='addButton' onClick={this.toggleAdding}>{this.state.isAdding ? 'Cancel' : 'Add Smurf'}</button>
           {this.state.isAdding && (
             <SmurfForm
               addNewSmurf={this.addNewSmurf}
